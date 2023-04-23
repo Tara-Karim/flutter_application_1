@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/requests.dart';
 import 'package:flutter_application_1/screens/screen.dart';
 import 'package:flutter_application_1/theme_service.dart';
 import 'package:get_storage/get_storage.dart';
@@ -10,6 +11,9 @@ import 'screens/setting_screen.dart';
 
 void main(List<String> args) async{
   await GetStorage.init();
+
+  //var data = await getNews();
+  //for(var item in data) print(item.title);
 
    runApp(myApp());
 }

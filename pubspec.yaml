@@ -41,6 +41,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
 
+  #these are api packages added by rawen mahmwd
+  http:
+  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
