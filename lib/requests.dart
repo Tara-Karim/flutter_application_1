@@ -5,16 +5,16 @@ import 'package:http/http.dart' as http;
 
 
 String API_KEY = "994a4c99a79aafa83bf9b4362a52b870";
-String MAIN_URL = "http://api.mediastack.com/v1/";
+String MAIN_URL = "http://api.mediastack.com/v1";
 
 Future<List<NewsArticle>> getNews({
   List<String>? categories,
   String? source,
-  String? sortBy,
+  String? sort,
   String? language,
   String? country,
-  int? pageSize,
-  int? page,
+  int? limit,
+  int? offset,
 }) async {
   final queryParams = <String, dynamic>{};
 
@@ -25,8 +25,8 @@ Future<List<NewsArticle>> getNews({
   if (source != null) {
     queryParams['source'] = source;
   }
-  if (sortBy != null) {
-    queryParams['sortBy'] = sortBy;
+  if (sort != null) {
+    queryParams['sort'] = sort;
   }
   if (language != null) {
     queryParams['language'] = language;
@@ -34,14 +34,16 @@ Future<List<NewsArticle>> getNews({
   if (country != null) {
     queryParams['country'] = country;
   }
-  if (pageSize != null) {
-    queryParams['pageSize'] = pageSize.toString();
+  if (limit != null) {
+    queryParams['limit'] = limit;
   }
-  if (page != null) {
-    queryParams['page'] = page.toString();
+  if (offset != null) {
+    queryParams['offset'] = offset;
   }
 
-  final url = Uri.https(MAIN_URL, '/news', queryParams);
+  var res = queryParams.entries.map((e)=> '${e.key}=${e.value}').toList().join('&');
+
+  final url = Uri.parse('$MAIN_URL/news?$res');
 
   final response = await http.get(url);
 

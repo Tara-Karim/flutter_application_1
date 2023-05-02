@@ -31,7 +31,7 @@ class NewsArticle {
       description: json['description'],
       url: json['url'],
       source: json['source'],
-      image: json['image'],
+      image: json['image'].toString().split(' ')[0],
       category: json['category'],
       language: json['language'],
       country: json['country'],
